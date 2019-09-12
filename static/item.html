@@ -2,21 +2,9 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="style/style.css">
+    <script src="scripts/item.js"></script>
     <meta charset='utf-8'>
     <title>Rakenduste programmeerimine 2k19</title>
-
-    <script>
-        alert("Hello World. Item page!");
-
-        const x = window.location;
-        console.log(x);
-        const urlParams = new URLSearchParams(window.location.search);
-        const title = urlParams.get("title");
-        const cost = urlParams.get("cost");
-        const src = urlParams.get("src");
-        console.log(title, cost, src);
-        alert(`Title: ${title} cost: ${cost} path: ${src}`)
-    </script>
 </head>
 <body>
 
@@ -27,8 +15,9 @@
             <button>Cart</button>
         </div>
     </div>
-
-    <center>Olen toote leht :)</center>
+    <div class="content" id="item-body">
+        
+    </div>
 
 </body>
 </html>
