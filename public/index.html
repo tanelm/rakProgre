@@ -2,7 +2,11 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="style/style.css">
-    <script src="scripts/itemsList.js"></script>
+    <script src="bundle.js"></script>
+    <!-- 
+        <script src="scripts/itemsList.js"></script>
+        <script src="scripts/utils.js"></script>
+    -->
     <meta charset='utf-8'>
     <title>Rakenduste programmeerimine 2k19</title>
 </head>
@@ -14,6 +18,13 @@
             <button>Login/signup</button>
             <button>Cart</button>
         </div>
+    </div>
+    <div id="category-dropdown" class="category-wrapper">
+        Select category:
+        <select name="category">
+            <option value="laptop">Laptops</option>
+            <option value="phones" selected>Phones</option>
+        </select>
     </div>
 
     <div class="content" id="item-list">
