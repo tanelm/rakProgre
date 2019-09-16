@@ -18,7 +18,7 @@ const titleElement = document.createElement("h2");
 titleElement.textContent = title;
 titleElement.className = "item__title"
 
-const description = "Üks väga väga lahe auto mis saab sõita 200-ga ja kuuenda käiguga kummi vilistada";
+const description = "";
 
 const textElement = document.createElement("p")
 textElement.textContent = description;
