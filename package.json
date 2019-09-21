@@ -4,11 +4,13 @@
   "scripts": {
     "build": "webpack",
     "start": "node server.js",
-    "start:dev": "webpack-dev-server --open"
+    "start:dev": "webpack-dev-server --open --mode\"development\""
   },
   "dependencies": {
     "@babel/polyfill": "^7.6.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.0",

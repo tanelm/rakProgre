@@ -1,10 +1,15 @@
-import homepage from "./homepage.js";
-import itempage from "./itempage.js";
+import React from "react";
+import ReactDOM from "react-dom";
 
-console.log("tere olen index fail");
+const root = document.getElementById("app");
 
+console.log("root", root);
 
-window.addEventListener("load", () =>{
-    homepage.setup();
-    itempage.setup();
-});
+ReactDOM.render(
+    React.createElement(
+        "button",
+        {},
+        "I am a button, Hello World!"
+    ),
+    root
+);
