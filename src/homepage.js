@@ -12,11 +12,11 @@ let selectedCategory = categories.PHONE;
 
 
 function createItems(){
-    const root = document.getElementById('item-list');
+    const root = document.getElementById("item-list");
 
     root.innerHTML = null; //reset
     
-    let item = [];
+    let items = [];
     if(selectedCategory === categories.PHONE){
         items = phones;
     }else if(selectedCategory === categories.LAPTOP){
@@ -26,16 +26,16 @@ function createItems(){
         const element = utils.createItemElement(phone);
         root.append(element);
     });
-};
+}
 
 function setupCategoryListener(){
     const dropdown = document.getElementById("category-dropdown");
-    dropdown.addEventListener('change', (event) =>{
+    dropdown.addEventListener("change", (event) =>{
         console.log(event.target.value);
         selectedCategory = event.target.value;
         createItems();
     });
-};
+}
 
 function setup(){
 

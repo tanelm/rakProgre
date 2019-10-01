@@ -3,9 +3,9 @@ function setup(){
     const x = window.location;
     console.log(x);
     const urlParams = new URLSearchParams(window.location.search);
-    const title = urlParams.get('title');
-    const cost = urlParams.get('cost');
-    const src = urlParams.get('src');
+    const title = urlParams.get("title");
+    const cost = urlParams.get("cost");
+    const src = urlParams.get("src");
     //alert('Title $(title) cost: $(cost) path: $(src)');
     
     const container = document.createElement("div");
@@ -17,11 +17,11 @@ function setup(){
     
     const titleElement = document.createElement("h2");
     titleElement.textContent = title;
-    titleElement.className = "item__title"
+    titleElement.className = "item__title";
     
     const description = "";
     
-    const textElement = document.createElement("p")
+    const textElement = document.createElement("p");
     textElement.textContent = description;
     textElement.className = "item__description";
     

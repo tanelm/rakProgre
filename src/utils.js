@@ -28,4 +28,4 @@ function createItemElement(item){
 
 module.exports = {
     createItemElement,
-}
+};
