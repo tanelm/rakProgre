@@ -37,9 +37,12 @@ module.exports = {
         ]
       },
     devServer: {
-        historyApiFallback: true,
+        //historyApiFallback: true,
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
-        port: 9000
+        port: 9000,
+        proxy: {
+          '/api': 'http://localhost:3000'
+        }
       }
 };
