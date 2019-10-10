@@ -78,21 +78,25 @@ class Homepage extends React.PureComponent{
     };
 
     render(){
+        const items = this.getVisibleItems();
         return(
             <>
             <Header/>
-            <ItemFilter
-                allCategories={this.state.allCategories}
-                handleDropdown={this.handleDropdown}
-                isSelected={this.isSelected}
-            />
+            <div>
+                Items found {items.length}
+            </div>
             <div className={"items-settings"}>
+                <ItemFilter
+                    allCategories={this.state.allCategories}
+                    handleDropdown={this.handleDropdown}
+                    isSelected={this.isSelected}
+                />
                 <SortDropdown
                 direction={this.state.sortDirection}
                 onChange={this.handleSortDropdown}
                 />
             </div>
-            <ItemList items={this.getVisibleItems()} />
+            <ItemList items={items} />
             </>   
         );
     }
