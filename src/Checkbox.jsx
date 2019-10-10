@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./checkbox-slider.css";
+import "./style/checkbox-slider.css";
 
 const Checkbox = ({name, checked, onChange}) => (
     <div className="container">

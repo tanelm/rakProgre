@@ -3,7 +3,7 @@ import Header from "./Header.jsx";
 import ItemList from "./itemList.jsx";
 import Checkbox from "./Checkbox.jsx";
 import PropTypes from "prop-types";
-import "./homepage.css";
+import "./style/homepage.css";
 import SortDropdown from "./sortDropdown.jsx";
 
 
