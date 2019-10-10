@@ -1,17 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./checkbox-slider.css";
 
-const Checkbox = ({name, onChange, checked}) => (
-    <div>
-        <label>
-            {name}
+const Checkbox = ({name, checked, onChange}) => (
+    <div className="container">
+        <div>{name}</div>
+        <label className="switch">
             <input 
-            name={name}
-            type="checkbox"
-            checked={checked}
+            type="checkbox" 
+            id={name} 
+            name={name} 
+            checked={checked} 
             onChange={onChange} />
+            <div className="slider round"></div>
         </label>
-    </div>
+    </div> 
 );
 
 Checkbox.propTypes = {

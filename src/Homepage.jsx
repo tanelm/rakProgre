@@ -2,6 +2,8 @@ import React from "react";
 import Header from "./Header.jsx";
 import ItemList from "./itemList.jsx";
 import Checkbox from "./Checkbox.jsx";
+import PropTypes from "prop-types";
+import "./homepage.css";
 
 
 class Homepage extends React.PureComponent{
@@ -64,22 +66,38 @@ class Homepage extends React.PureComponent{
         return(
             <>
             <Header/>
-            {
-                this.state.allCategories.map( categoryName => {
-                    return(
-                        <Checkbox 
-                            key={categoryName}
-                            name={categoryName} 
-                            onChange={this.handleDropdown} 
-                            checked={this.isSelected(categoryName)} 
-                        />
-                    );
-                })
-            }
+            <ItemFilter
+                allCategories={this.state.allCategories}
+                handleDropdown={this.handleDropdown}
+                isSelected={this.isSelected}
+            />
             <ItemList items={this.getVisibleItems()} />
             </>   
         );
     }
 }
+
+const ItemFilter = ({allCategories, handleDropdown, isSelected}) => {
+    return(
+        <div className={"itemFilter-wrapper"}>
+            {
+                allCategories.map(categoryName =>{
+                    return(
+                        <Checkbox 
+                            key={categoryName}
+                            name={categoryName} 
+                            onChange={handleDropdown} 
+                            checked={isSelected(categoryName)} 
+                        />
+                    );
+                })
+            }
+        </div>
+    );};
+ItemFilter.propTypes = {
+    allCategories: PropTypes.array.isRequired,
+    handleDropdown: PropTypes.func.isRequired,
+    isSelected: PropTypes.func.isRequire,
+};    
 
 export default Homepage;
