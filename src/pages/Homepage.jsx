@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "./Header.jsx";
-import ItemList from "./itemList.jsx";
-import Checkbox from "./Checkbox.jsx";
+import Header from "../components/Header.jsx";
+import ItemList from "../components/itemList.jsx";
+import Checkbox from "../components/Checkbox.jsx";
 import PropTypes from "prop-types";
 import "./style/homepage.css";
-import SortDropdown from "./sortDropdown.jsx";
+import SortDropdown from "../components/sortDropdown.jsx";
 
 
 class Homepage extends React.PureComponent{
@@ -78,26 +78,25 @@ class Homepage extends React.PureComponent{
     };
 
     render(){
-        const items = this.getVisibleItems();
+        const visibleItems = this.getVisibleItems();
         return(
             <>
             <Header/>
-            <div>
-                Items found {items.length}
+            <div className={"body-wrapper"}>
+                    <ItemFilter 
+                        allCategories={this.state.allCategories}
+                        handleDropdown={this.handleDropdown}
+                        isSelected={this.isSelected}
+                    />
+                <div className={"items-header-wrapper"}>
+                    <div>
+                        {visibleItems.length} items found for {this.state.selectedCategories.join(", ")}
+                    </div>
+                    <SortDropdown direction = {this.state.sortDirection} onChange = {this.handleSortDropdown} />
+                </div>
+                <ItemList items={visibleItems}/>
             </div>
-            <div className={"items-settings"}>
-                <ItemFilter
-                    allCategories={this.state.allCategories}
-                    handleDropdown={this.handleDropdown}
-                    isSelected={this.isSelected}
-                />
-                <SortDropdown
-                direction={this.state.sortDirection}
-                onChange={this.handleSortDropdown}
-                />
-            </div>
-            <ItemList items={items} />
-            </>   
+        </>
         );
     }
 }

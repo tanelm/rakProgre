@@ -4,9 +4,9 @@ import "./style/dropdown.css";
 
 const sortDropdown = ({direction, onChange}) => (
     <div>
-        <select id="mainselection" value={direction} onChange={onChange}>
-            <option value={-1}>Price high to low</option>
-            <option value={1}>Price low to high</option>
+        <select value={direction} onChange={onChange} className="mdl-selectfield">
+            <option value={-1}>Price descending</option>
+            <option value={1}>Price ascending</option>
         </select>
     </div>
 );

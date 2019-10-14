@@ -32,7 +32,8 @@ const cleanPrice = (dirty) => {
     // Remove to
    const parts =  dirty.split("to");
    //remove dollar sign
-   return parts[0].replace("$", "");
+   const clean = parts[0].replace("$", "");
+   return clean.replace(",", "");
 };
 
 module.exports = {
