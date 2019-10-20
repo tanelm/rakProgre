@@ -12,7 +12,6 @@ const bodyParser = require("body-parser");
 /* Don't need .env for Heroku */
 if(process.env.NODE_ENV !== "production"){
     require('dotenv').config();
-    const DB_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@tanelm-ebyme.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 }
 
 const DB_URL = `${process.env.DB_URL}`;
@@ -39,7 +38,7 @@ function listen(){
     });
 }
 
-mongoose.connect(DB_URL)
+mongoose.connect(DB_URL, { useNewUrlParser: true })
 .then(() => {
     console.log("DB access successful");
     //deleteAllItems();
