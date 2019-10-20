@@ -12,9 +12,9 @@ const bodyParser = require("body-parser");
 /* Don't need .env for Heroku */
 if(process.env.NODE_ENV !== "production"){
     require('dotenv').config();
+    const DB_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@tanelm-ebyme.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 }
 
-const DB_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@tanelm-ebyme.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
 app.use(bodyParser.json())
 
