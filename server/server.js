@@ -15,6 +15,7 @@ if(process.env.NODE_ENV !== "production"){
     const DB_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@tanelm-ebyme.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 }
 
+const DB_URL = `${process.env.DB_URL}`;
 
 app.use(bodyParser.json())
 
