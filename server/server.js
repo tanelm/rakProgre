@@ -23,11 +23,15 @@ app.use(itemRouter);
 app.use(userRouter);
 
 
-app.get("*", (req, res) => {
+app.get("/", (req, res) => {
     res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
 });
-
-
+app.get("/login", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
+});
+app.get("/register", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
+});
 app.get("/items/*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
 });
