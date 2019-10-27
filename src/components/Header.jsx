@@ -12,7 +12,9 @@ const Header = () => {
             <div className="header__buttons">
                 <div className={"header__button"}>
                     <img src={userIcon} />
-                    <div className={"header__button-text"}>Login/<br/>Register</div>
+                    <Link to={"/login"}>
+                        <div className={"header__button-text"}>Login/<br/>Register</div>
+                    </Link>
                 </div>
                 <div className={"header__button"}>
                     <img src={cart} style={{height: 35}} />

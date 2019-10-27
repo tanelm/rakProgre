@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "../components/Header.jsx";
 import ItemList from "../components/itemList.jsx";
 import Checkbox from "../components/Checkbox.jsx";
 import PropTypes from "prop-types";
@@ -20,7 +19,7 @@ class Homepage extends React.PureComponent{
     }
 
     fetchItems = () => {
-        fetch("/api/items/")
+        fetch("/api/items")
         .then(res =>{
             console.log("res", res);
             return res.json();
@@ -81,7 +80,6 @@ class Homepage extends React.PureComponent{
         const visibleItems = this.getVisibleItems();
         return(
             <>
-            <Header/>
             <div className={"body-wrapper"}>
                     <ItemFilter 
                         allCategories={this.state.allCategories}
