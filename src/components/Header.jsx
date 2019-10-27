@@ -2,8 +2,10 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {userIcon, cart} from "../icons.js";
 import "./style/header.css";
+import PropTypes from "prop-types";
 
-const Header = () => {
+const Header = ({token, user}) => {
+    console.log("header", token, user);
     return(
         <div className="header">
             <Link to={"/"}>
@@ -11,10 +13,8 @@ const Header = () => {
             </Link>
             <div className="header__buttons">
                 <div className={"header__button"}>
-                    <img src={userIcon} />
-                    <Link to={"/login"}>
-                        <div className={"header__button-text"}>Login/<br/>Register</div>
-                    </Link>
+                    {user.email && <WelcomeIcon user = {user} />}
+                    {!user.email && <LoginRegisterIcon />}
                 </div>
                 <div className={"header__button"}>
                     <img src={cart} style={{height: 35}} />
@@ -25,5 +25,30 @@ const Header = () => {
 
     );
 };
+
+Header.propTypes = {
+    token: PropTypes.string,
+    user: PropTypes.object,
+  };
+
+  const LoginRegisterIcon = () => (
+    <>
+    <img src={userIcon} />
+    <Link to={"/login"}>
+        <div className={"header__button-text"}>Login/<br/>Register</div>
+    </Link>
+    </>
+  );
+
+  const WelcomeIcon = ({user}) => (
+    <Link className={"header_button"} to={`/users/${user._id}`}>
+      <img src = {userIcon} />
+      <div className={"header_button-text"}>Welcome, {user.email}</div>
+    </Link>
+  );
+
+  WelcomeIcon.propTypes = {
+    user: PropTypes.object.isRequired
+  };
 
 export default Header;

@@ -23,7 +23,7 @@ class Loginpage extends React.PureComponent {
     handleSubmit = (event) => {
         event.preventDefault();
         console.log("submit", this.state); 
-        fetch("/api/users/login", {
+        fetch("/api/v1/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -31,8 +31,11 @@ class Loginpage extends React.PureComponent {
 
             body: JSON.stringify(this.state),
         })
-        .then( res => {
-            console.log("response", res);
+        .then( res=> res.json())
+        .then( ({token, user}) => {
+            console.log("response", token, user);
+            this.props.onLogin({token, user});
+            this.props.history.push(`/users/${user._id}`);
         })
         .catch ( err => {
             console.log("Error", err);

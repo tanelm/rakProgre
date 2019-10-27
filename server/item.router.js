@@ -6,7 +6,7 @@ const Item = require("./item.model.js");
 /**
  * Deletes an item
  */
-router.delete("/api/items/:itemId", (req, res) => {
+router.delete("/items/:itemId", (req, res) => {
     Item.deleteOne({"_id" : mongoose.Types.ObjectId(req.params.itemId)}, (err) => {
         if(err) {
             console.log(err);
@@ -20,7 +20,7 @@ router.delete("/api/items/:itemId", (req, res) => {
 /**
  * Create a new item
  */
-router.post("/api/items", (req, res) => {
+router.post("/items", (req, res) => {
     const props = {
         imgSrc: "example.invalid",
         title: "phone red",
@@ -43,7 +43,7 @@ router.post("/api/items", (req, res) => {
 /**
  * Returns an item
  */
-router.get("/api/items/:itemId",(req, res)=>{
+router.get("/items/:itemId",(req, res)=>{
     Item.findById(req.params.itemId, function(err, item) {
         if(err){
             console.log("Error: ", err);
@@ -57,7 +57,7 @@ router.get("/api/items/:itemId",(req, res)=>{
 /**
  * Returns all items
  */
-router.get("/api/items",(req, res)=>{
+router.get("/items",(req, res)=>{
     Item.find({}, function(err, items){
         if(err){
             console.log("Error: ", err);

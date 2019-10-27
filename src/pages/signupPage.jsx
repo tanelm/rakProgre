@@ -14,7 +14,6 @@ class signupPage extends React.PureComponent {
         this.state = {
             email: "",
             password: "",
-            confirmPassword: "",
         };
     }
 
@@ -23,7 +22,7 @@ class signupPage extends React.PureComponent {
         console.log("submit", this.state);
         event.preventDefault();
         console.log("submit", this.state); 
-        fetch("/api/users/signup", {
+        fetch("/api/v1/auth/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -31,8 +30,10 @@ class signupPage extends React.PureComponent {
 
             body: JSON.stringify(this.state),
         })
-        .then( res => {
-            console.log("response", res);
+        .then( res => res.json())
+        .then( data=>{
+            console.log("data", data);
+            this.props.history.push("/login");
         })
         .catch ( err => {
             console.log("Error", err);
