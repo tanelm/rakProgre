@@ -20,4 +20,4 @@ class userPage extends React.PureComponent {
     }
 }
 
-export default authConsumer(protectedRedirect(UserPage)); 
+export default authConsumer(protectedRedirect(userPage)); 
