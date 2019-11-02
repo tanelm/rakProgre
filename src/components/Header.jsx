@@ -13,7 +13,6 @@ const Header = ({user}) => {
         </Link>
       <div className="header__buttons">
         <div className={"header__button"}>
-        <input id="search" placeholder="Search..." type="text"/>
         {user.email && <WelcomeIcon user={user}/>}
         {!user.email && <LoginRegisterIcon />}
         <a href="#"><img className={"header-icon cart-icon"} src={cartIcon} alt={"Cart Icon"} />Cart</a>
