@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import authConsumer from "../components/authConsumer.jsx";
 
 class userPage extends React.PureComponent {
 
@@ -18,4 +19,4 @@ class userPage extends React.PureComponent {
     }
 }
 
-export default userPage;
+export default authConsumer(userPage); 
