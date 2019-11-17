@@ -1,5 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./style/itemPage.css";
+import FancyButton from "../components/FancyButton.jsx";
+import {connect} from "react-redux";
+import {addItem} from "../actions/store/store.js";
+const description = "Väga tore ese"; 
 
 
 class itemPage extends React.PureComponent{
@@ -25,25 +30,53 @@ class itemPage extends React.PureComponent{
         });
     }
 
+    handleBuy = () => {
+        this.props.dispatch(addItem(this.state));
+    };
+
     componentDidMount(){
         this.fetchItem();
     }
 
     render(){
+        console.log("itempage", this.props);
         return(
             <>
-            <div className={"itemContainer"}>
-                <img src={this.state.imgSrc}/>
-                <div className={"item__title"}>{this.state.title}</div>
-                <div className={"item__price"}>{this.state.price}</div>
-            </div>
-            </>   
+                <div className={"box spacer itemPage"}>
+                    <div style={{display: "flex",}}>
+                        <div className={"itemPage-left"}>
+                            <img src={this.state.imgSrc} />
+                        </div>
+                        <div className={"itemPage-content"}>
+                            <div>
+                                <h2>{this.state.title}</h2>
+                            </div>
+                            <div>
+                                <div>
+                                    <p className={"text--bold text--yellow"}>
+                                        {this.state.price} €
+                                    </p>
+                                </div>
+                                <div>
+                                    <p style={{textAlign: "justify"}}>
+                                        {description}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={"itemPage-footer"}>
+                        <FancyButton onClick={this.handleBuy}>Osta</FancyButton>
+                    </div>
+                </div>
+            </>
         );
     }
 }
 
 itemPage.propTypes = {
     match: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
 };
 
-export default itemPage;
+export default connect()(itemPage);

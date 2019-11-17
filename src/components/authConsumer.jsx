@@ -1,5 +1,5 @@
 import React from "react";
-import {AuthContext} from "../index.jsx";
+import {AuthContext} from "../App.jsx";
 
 const authConsumer = (WrapperComponent) => {
     return class extends React.PureComponent {
