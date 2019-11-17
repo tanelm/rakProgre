@@ -4,7 +4,7 @@ import {MdDelete} from "react-icons/md";
 import "./style/cart.css";
 import FancyButton from "../components/FancyButton.jsx";
 import {connect} from "react-redux";
-import {removeItem} from "../actions/store/actions.js";
+import {removeItem} from "../actions/store/store.js";
 import {toast} from "react-toastify";
 
 class CartPage extends React.PureComponent {
@@ -29,7 +29,7 @@ class CartPage extends React.PureComponent {
 
     render(){
         const {sum, tax} = this.calcNumbers();
-        return (
+        if(this.props.cart.length > 0) return (
             <div className={"spacer"}>
                 <div className={"box cart"}>
                     <Table
@@ -40,9 +40,9 @@ class CartPage extends React.PureComponent {
                 <div className={"box cart__summary"}>
                     <table>
                         <tbody>
-                            <tr><td>Vahesumma</td><td>{sum} €</td></tr>
-                            <tr><td>Maksud</td><td>{tax} €</td></tr>
-                            <tr><td>Kokku</td><td>{tax + sum} €</td></tr>
+                            <tr><td>Toodete hind: </td><td>{sum} €</td></tr>
+                            <tr><td>Käibemaks: </td><td>{tax} €</td></tr>
+                            <tr><td>Kokku: </td><td>{tax + sum} €</td></tr>
                             <tr>
                                 <td></td>
                                 <td>
@@ -56,6 +56,12 @@ class CartPage extends React.PureComponent {
                 </div>
             </div>
         );
+        if(this.props.cart.length == 0) return(
+            <div className={"emptyList"}>
+                Ostukorvis tooteid ei ole!
+            </div>
+        );
+
     }
 }
 
@@ -63,7 +69,7 @@ const Table = ({rows, onTrash}) => {
     return (
         <div className={"table"}>
             <div className={"row"}>
-                <div className={"cell"}>Toode</div>
+                <div className={"cell"}></div>
                 <div className={"cell cell--grow"}>Nimetus</div>
                 <div className={"cell"}>Kategooria</div>
                 <div className={"cell cell--right"}>Summa</div>
