@@ -3,7 +3,7 @@ import ItemList from "../components/itemList.jsx";
 import Checkbox from "../components/Checkbox.jsx";
 import PropTypes from "prop-types";
 import "./style/homepage.css";
-import SortDropdown from "../components/SortDropdown.jsx";
+import SortDropdown from "../components/sortDropdown.jsx";
 import {connect} from "react-redux";
 import {ItemProps} from "./CartPage.jsx";
 import {getItems} from "../actions/store/store.js";
