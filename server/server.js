@@ -1,87 +1,39 @@
-const express = require("express");
-const app = express();
-const path = require("path");
-const PORT = process.env.PORT || 3000;
-
-const mongoose = require("mongoose");
-const itemRouter = require("./item.router.js");
-const userRouter = require("./user.router.js");
-const authRouter = require("./auth.router.js");
-const Item = require("./item.model.js");
-const DB = require("./database.js");
-const bodyParser = require("body-parser");
-
 /* Don't need .env for Heroku */
 if(process.env.NODE_ENV !== "production"){
     require('dotenv').config();
 }
-
-const DB_URL = `${process.env.DB_URL}`;
+const express = require("express");
+const app = express();
+const itemRouter = require("./item.router.js");
+const userRouter = require("./user.router.js");
+const authRouter = require("./auth.router.js");
+const bodyParser = require("body-parser");
+const database = require("./database.js");
+const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json())
-
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1", itemRouter);
 app.use("/api/v1/users", userRouter);
 
+/** FOr images and bundle.js */
+app.use("/static", express.static("dist/static"));
 
-app.get("/", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
-});
-app.get("/login", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
-});
-app.get("/register", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
-});
-app.get("/items/*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
-});
-
-app.use(express.static("dist"));
+/** For index.html */
+app.use("/*", express.static("dist"));
 
 function listen(){
     // Heroku needs process.env.PORT
     app.listen(PORT, () => {
-        console.log("Server started");
+        console.log("Server started", PORT);
         console.log(`http://localhost:${PORT}`);
     });
 }
 
-mongoose.connect(DB_URL, { useNewUrlParser: true })
-.then(() => {
-    console.log("DB access successful");
-    //deleteAllItems();
-    migrate();
-    listen();
-})
-.catch(err => {
-    console.log("DB access error: ", err);
-});
-
-function migrate(){ // async, can't know when all are saved
-    Item.count({}, (err, countNo) => {
-        if(err) throw err;
-        if(countNo > 0) {
-            console.log("Items already exist in mongodb");
-            return;
-        }
-        saveAllItems();
+database.connect()
+    .then(() =>{
+        listen();
+    })
+    .catch( err => {
+        console.log("something happened", err);
     });
-}
-
-function saveAllItems(){
-    console.log("Migration started");
-    const items = DB.getItems();
-    items.forEach(item => {
-        const document = new Item(item);
-        document.save ((err) => {
-            if(err){
-                console.log(err);
-                throw new Error("Item save error");
-            }
-            console.log("Save successful")
-        });
-    });
-    console.log("items", items);
-}

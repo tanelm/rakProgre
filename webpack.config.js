@@ -7,7 +7,7 @@ module.exports = {
     entry: './src/index.jsx',
     output: {
         path:path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: 'static/bundle.js'
     },
     performance: { hints: false },
     plugins: [
@@ -16,7 +16,13 @@ module.exports = {
             {
             from: 'public',
             }
-        ])
+        ]),
+        new CopyPlugin([
+          {
+          from: 'public/img',
+          to: "static/img"
+          }
+      ])
     ],
     module: {
         rules: [

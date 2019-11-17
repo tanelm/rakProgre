@@ -118,7 +118,7 @@ const ItemFilter = ({allCategories, handleDropdown, isSelected}) => {
 ItemFilter.propTypes = {
     allCategories: PropTypes.array.isRequired,
     handleDropdown: PropTypes.func.isRequired,
-    isSelected: PropTypes.func.isRequire,
+    isSelected: PropTypes.func.isRequired,
 };    
 
 export default Homepage;

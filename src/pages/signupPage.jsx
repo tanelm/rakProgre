@@ -74,7 +74,7 @@ class signupPage extends React.PureComponent {
                     />
                     <br/><br/>
                     <Link to="./login">
-                        <a>Back to login</a>
+                        Back to login
                     </Link>
                 </form>
             </div>

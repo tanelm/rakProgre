@@ -76,7 +76,7 @@ class Loginpage extends React.PureComponent {
                     />
                     <br/><br/>
                     Not registered? <Link to="./signup">
-                        <a>Create an account!</a>
+                        Create an account!
                     </Link>
                 </form>
             </div>

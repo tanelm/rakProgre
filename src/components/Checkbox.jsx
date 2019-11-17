@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./style/checkbox.css";
 
+
 const Checkbox = ({name, onChange, checked}) => {
     return (
         <div>
@@ -19,8 +20,8 @@ const Checkbox = ({name, onChange, checked}) => {
 
 Checkbox.propTypes = {
     name: PropTypes.string.isRequired,
-    onChange: PropTypes.string.isRequired,
-    checked: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    checked: PropTypes.bool.isRequired,
 };
 
 export default Checkbox;
