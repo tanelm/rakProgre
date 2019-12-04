@@ -5,6 +5,7 @@ import FancyButton from "../components/FancyButton.jsx";
 import {connect} from "react-redux";
 import {addItem} from "../actions/store/action.js";
 const description = "Väga tore ese"; 
+import {toast} from "react-toastify";
 
 
 class itemPage extends React.PureComponent{
@@ -32,6 +33,7 @@ class itemPage extends React.PureComponent{
 
     handleBuy = () => {
         this.props.dispatch(addItem(this.state));
+        toast.success("Toode lisatud!");
     };
 
     componentDidMount(){

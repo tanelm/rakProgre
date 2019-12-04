@@ -11,6 +11,8 @@ import CartPage from "./pages/CartPage.jsx";
 import {Provider} from "react-redux";
 import configureStore from "./actions/store/configureStore.js";
 import { PersistGate } from "redux-persist/integration/react";
+import {ToastContainer, toast} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const {store, persistor} = configureStore();
 
@@ -19,8 +21,10 @@ class App extends React.Component {
 
   render() {
     return(
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
+      <>
+      <ToastContainer enableMultiContainer position={toast.POSITION.BOTTOM_LEFT}/>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
               <BrowserRouter>
                 <Route path={"/"} component = {Header} /> 
                 <Switch>
@@ -33,8 +37,9 @@ class App extends React.Component {
                   <Route component = {NotFound} />     
                 </Switch>
               </BrowserRouter>
-        </PersistGate>    
-      </Provider>    
+          </PersistGate>    
+        </Provider>
+      </>     
     );
   }
 }
