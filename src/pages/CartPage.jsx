@@ -4,7 +4,7 @@ import {MdDelete} from "react-icons/md";
 import "./style/cart.css";
 import FancyButton from "../components/FancyButton.jsx";
 import {connect} from "react-redux";
-import {removeItem} from "../actions/store/store.js";
+import {removeItem} from "../actions/store/action.js";
 import {toast} from "react-toastify";
 
 class CartPage extends React.PureComponent {
@@ -46,7 +46,7 @@ class CartPage extends React.PureComponent {
                             <tr>
                                 <td></td>
                                 <td>
-                                    <FancyButton onClick={() => console.log("Vormista ost")}>
+                                    <FancyButton onClick={() => console.log("Läheb ostma")}>
                                         Vormista ost
                                     </FancyButton>
                                 </td>

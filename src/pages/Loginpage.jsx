@@ -2,6 +2,8 @@ import React from "react";
 import "./style/form.css";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { userUpdate } from "../actions/store/action.js";
 
 
 
@@ -9,7 +11,7 @@ class Loginpage extends React.PureComponent {
 
     static propTypes = {
         history: PropTypes.object.isRequired,
-        onLogin: PropTypes.func.isRequired,
+        dispatch: PropTypes.func.isRequired,
     };
 
     constructor(props){
@@ -32,14 +34,15 @@ class Loginpage extends React.PureComponent {
             body: JSON.stringify(this.state),
         })
         .then( res=> res.json())
-        .then( ({token, user}) => {
-            console.log("response", token, user);
-            this.props.onLogin({token, user});
-            this.props.history.push(`/users/${user._id}`);
-        })
+        .then(this.handleSuccess)
         .catch ( err => {
             console.log("Error", err);
         });
+    };
+
+    handleSuccess = ({user}) => {
+        this.props.dispatch(userUpdate(user));
+        this.props.history.push(`/users/${user._id}`);
     };
 
     handleChange = (e) => {
@@ -85,4 +88,4 @@ class Loginpage extends React.PureComponent {
     }
 }
 
-export default Loginpage;
+export default connect()(Loginpage); 

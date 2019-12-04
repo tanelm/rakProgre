@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "./style/itemPage.css";
 import FancyButton from "../components/FancyButton.jsx";
 import {connect} from "react-redux";
-import {addItem} from "../actions/store/store.js";
+import {addItem} from "../actions/store/action.js";
 const description = "Väga tore ese"; 
 
 

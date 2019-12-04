@@ -6,7 +6,7 @@ import "./style/homepage.css";
 import SortDropdown from "../components/sortDropdown.jsx";
 import {connect} from "react-redux";
 import {ItemProps} from "./CartPage.jsx";
-import {getItems} from "../actions/store/store.js";
+import {getItems} from "../actions/store/action.js";
 
 
 class Homepage extends React.PureComponent{
