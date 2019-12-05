@@ -6,6 +6,7 @@ import FancyButton from "../components/FancyButton.jsx";
 import {connect} from "react-redux";
 import {removeItem} from "../actions/store/action.js";
 import {toast} from "react-toastify";
+import * as selectors from "../actions/store/selectors.js";
 
 class CartPage extends React.PureComponent {
     static propTypes = {
@@ -121,7 +122,7 @@ Row.propTypes = {
 };
 const mapStateToProps = (store) => {
     return {
-        cart: store.cart
+        cart: selectors.getCart(store)
     };
 };
 export default connect(mapStateToProps)(CartPage);

@@ -6,6 +6,7 @@ import "./style/userpage.css";
 import FancyButton from "../components/FancyButton.jsx";
 import { userUpdate, tokenUpdate } from "../actions/store/action.js";
 import protectedRedirect from "../components/protectedRedirect.jsx";
+import * as selectors from "../actions/store/selectors.js";
 
 class userPage extends React.PureComponent {
 
@@ -41,7 +42,7 @@ class userPage extends React.PureComponent {
 
 const mapStateToProps = (store) => {
     return {
-        user: store.user,
+        user: selectors.getUser(store),
     };
 };
 

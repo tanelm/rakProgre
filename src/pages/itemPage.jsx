@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {addItem} from "../actions/store/action.js";
 const description = "Väga tore ese"; 
 import {toast} from "react-toastify";
+import * as services from "../services.js";
 
 
 class itemPage extends React.PureComponent{
@@ -16,10 +17,7 @@ class itemPage extends React.PureComponent{
     }
 
     fetchItem = () => {
-        fetch(`/api/v1/items/${this.props.match.params.itemId}`)
-        .then(res =>{
-            return res.json();
-        })
+        services.getItem({itemId: this.props.match.params.itemId})
         .then(item =>{
             console.log("item ", item);
             this.setState( {

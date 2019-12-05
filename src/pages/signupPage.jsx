@@ -3,6 +3,7 @@ import "./style/form.css";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
+import * as services from "../services.js";
 
 class signupPage extends React.PureComponent {
 
@@ -20,21 +21,7 @@ class signupPage extends React.PureComponent {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log("submit", this.state);
-        event.preventDefault();
-        console.log("submit", this.state); 
-        fetch("/api/v1/auth/signup", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify(this.state),
-        })
-        .then( res => {
-            if(!res.ok) throw "Registreerimine ebaõnnestus";
-            return res.json();
-        })
+        services.signup(this.state)
         .then( () => {
             this.props.history.push("/login");
             toast.success("Kasutaja loodud!");

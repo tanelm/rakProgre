@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ItemProps} from "../pages/CartPage.jsx";
 import { UserPropTypes } from "../actions/store/reducer.js";
+import * as selectors from "../actions/store/selectors.js";
 
 const Header = ({user, cart}) => {
   return(
@@ -68,8 +69,8 @@ Badge.propTypes = {
 
   const mapStateToProps = (store) => {
     return {
-        cart: store.cart,
-        user: store.user,
+      cart: selectors.getCart(store),
+      user: selectors.getUser(store),
     };
 };
 
